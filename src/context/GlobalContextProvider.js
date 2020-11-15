@@ -13,7 +13,7 @@ function reducer(state, action) {
       return {
         ...state,
         signed_in: true,
-        user: 'Santa'
+        user: action.user
       }
     }
     case "SET_SIGNED_OUT": {

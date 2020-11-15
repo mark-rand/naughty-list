@@ -1,18 +1,13 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import ChristmasCountdown from "./christmas_countdown"
+import ProtectContent from "./protect_content"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ( props ) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,6 +18,12 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const content =
+    props.protect === "false" ? (
+      <div>{props.children}</div>
+    ) : (
+      <ProtectContent>{props.children}</ProtectContent>
+    )
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
@@ -33,13 +34,13 @@ const Layout = ({ children }) => {
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <main>{content}</main>
+        <footer
+          style={{
+            marginTop: `2rem`,
+          }}
+        >
+          <ChristmasCountdown/>
         </footer>
       </div>
     </>
