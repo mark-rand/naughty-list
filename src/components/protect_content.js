@@ -31,7 +31,7 @@ const ProtectContent = ({ children }) => {
   }
 
   const displayErrorMessage =
-    errorMessage != "" ? <div>{errorMessage}</div> : null
+    errorMessage !== "" ? <div>{errorMessage}</div> : null
 
   if (!state.signed_in) {
     return (
