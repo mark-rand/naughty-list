@@ -4,7 +4,6 @@ const ChristmasCountdown = () => {
   const countdownMonth = 12 - 1 // zero based months
   const countdownDay = 25
   var now = new Date()
-  console.log(now.getMonth())
   if (countdownDay === now.getDate() && countdownMonth === now.getMonth()) {
     return <>Happy Christmas!</>
   }
@@ -21,7 +20,6 @@ const ChristmasCountdown = () => {
   const targetDate = new Date(targetYear, countdownMonth, countdownDay)
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
   const daysUntilChristmas = Math.round((targetDate-today)/(1000*60*60*24))
-  console.log(targetDate - today)
   return (
     <>
       <span>Only {daysUntilChristmas} day{daysUntilChristmas > 1 ? "s" : null} until Christmas!!!! Be kind.</span>
